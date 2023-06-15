@@ -1,8 +1,8 @@
 <?php
 
-define ('DB_USER', "ECLBDIT203");
-define ('DB_PASSWORD', "@jxD9IKa!001");
-define ('DB_DATABASE', "bdengcomp_high");
+const DB_USER = "ECLBDIT203";
+const DB_PASSWORD = "@jxD9IKa!001";
+const DB_DATABASE = "bdengcomp_high";
 
 $conn = oci_connect(DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$conn) {
