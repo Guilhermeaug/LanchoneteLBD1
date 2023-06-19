@@ -11,10 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stid = oci_parse($conn, $sql);
   $status = oci_execute($stid);
 
-  if (!$status) {
-    $e = oci_error($stid);
-    echo 'Falhou!';
-  } else {
-    echo 'Usuário inserido com sucesso';
-  }
+  oci_free_statement($stid);
+  oci_close($conn);
+
+  header('Location: ../index.php');
 }
