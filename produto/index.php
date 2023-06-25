@@ -23,12 +23,6 @@
       <div class="col">
         <form action="cadastra_produto.php" method="POST">
           <div class="row mb-3">
-            <label for="id" class="col-sm-2 col-form-label">Identificador</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="id" required>
-            </div>
-          </div>
-          <div class="row mb-3">
             <label for="nome" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="nome" required>
