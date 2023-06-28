@@ -9,6 +9,9 @@
 </head>
 <body>
     <div class="container">
+    <?php
+    include'../partials/Header.php';
+    ?>
         <h1 class="text-uppercase font-weight-bold center">MENU DE OPERAÇÕES</h1>
         <div>
         <table class="table">
@@ -35,13 +38,35 @@
                     <th class="center"> <h2>EDITAR</h2></th>
                 </tr>
                 <tr>
-                    <td class="center"><a class="link" href="">Produto</a></td>
+                    <td class="center"><a class="link" href="/lanchonete/listaEditProdutos">Produto</a></td>
                 </tr>
                 <tr>
-                    <td class="center"><a class="link" href="">Fornecedor</a></td>
+                    <td class="center"><a class="link" href="/lanchonete/listaEditFornecedor">Fornecedor</a></td>
                 </tr>
                 <tr>
-                    <td class="center"><a class="link" href="">Funcionario</a></td>
+                    <td class="center"><a class="link" href="/lanchonete/listaEditFuncionario">Funcionario</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><a class="link" href="/lanchonete/listaEditCliente">Cliente</a></td>
+                </tr>
+            </table>
+        </div>
+        <div> 
+            <table class="table ">
+                <tr class="linha">
+                    <th class="center"> <h2>EXCLUIR</h2></th>
+                </tr>
+                <tr>
+                    <td class="center"><a class="link" href="/lanchonete/listaDelProduto">Produto</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><a class="link" href="/lanchonete/listaDelFornecedor">Fornecedor</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><a class="link" href="/lanchonete/listaDelFuncionario">Funcionario</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><a class="link" href="/lanchonete/listaDelCliente">Cliente</a></td>
                 </tr>
             </table>
         </div>

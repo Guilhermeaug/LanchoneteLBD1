@@ -9,8 +9,9 @@
 
 
 <body class="container">
-  <h1 class="display-1">Lanchonete Gosto do Gordo</h1>
-  <hr/>
+  <?php
+    include(__DIR__ . '/partials/Header.php');
+  ?>
   <img src="public/restaurante.jpg" class="w-100 h-50">
   <hr/>
   <h2 class="display-2 mb-2">Produtos</h2>
@@ -28,14 +29,16 @@ FROM
 ORDER BY
   FORNECEDOR.NOME_FORNECEDOR";
 
+  /*
   $stid = oci_parse($conn, $sql);
   oci_execute($stid);
+ 
 
   $suppliers = [];
   while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
     $suppliers[$row['NOME_FORNECEDOR']][] = $row;
   }
-
+  */
   foreach ($suppliers as $supplier => $products) {
     echo "<h2 class='display-3'>$supplier</h2>";
     echo "<div class='row row-cols-1 row-cols-md-2 g-4'>";
