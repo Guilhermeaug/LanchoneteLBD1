@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Funcionarios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edição de funcionários</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<section class="container">
+  <section class="container">
     <h1 class="text-center">Edição de Produtos</h1>
     <div class="row align-items-center justify-content-center mt-4">
       <div class="col d-none d-lg-block">
@@ -17,37 +19,33 @@
       <div class="col">
         <form action="update.php" method="POST">
           <?php
-          //pdo mysql
-          $pdo = new PDO('mysql:host=127.0.0.1:3308;dbname=lanchonete','root','');
+          include(__DIR__ . '/../config.php');
 
           $id = $_GET['idfuncionario'];
-          $sql = "SELECT * FROM FUNCIONARIO WHERE id_funcionario=".$id."";
-        
-          $stmt = $pdo->prepare($sql);
-          $stmt->execute();
-          $employee = $stmt->fetch(PDO::FETCH_ASSOC);
+          $sql = "SELECT * FROM FUNCIONARIO WHERE id_funcionario=" . $id . "";
 
-          $nome = $employee['nome_funcionario'];
-          $cpf = $employee['cpf'];
-          $telefone = $employee['telefone_funcionario'];
-          $nascimento = $employee['data_nascimento'];
-          $salario = $employee['salario'];
-          /*
-          $imagem = $product['imagem'];
-          $descricao = $product['descricao'] ;
-          */
+          $stid = oci_parse($conn, $sql);
+          oci_execute($stid);
+
+          $employee = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+
+          $nome = $employee['NOME_FUNCIONARIO'];
+          $cpf = $employee['CPF'];
+          $telefone = $employee['TELEFONE_FUNCIONARIO'];
+          $nascimento = $employee['DATA_NASCIMENTO'];
+          $salario = $employee['SALARIO'];
 
           echo '
           <div class="row mb-3">
           </div>
-          <input type="hidden" name="id" value="'.$id.'"/>
+          <input type="hidden" name="id" value="' . $id . '"/>
           
           <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" 
             class="form-control" 
             name="nome" 
-            value="'.$nome.'" 
+            value="' . $nome . '" 
             required placeholder="Digite seu nome" />
           </div>
           <div class="form-group mt-2">
@@ -55,7 +53,7 @@
             <input type="text" 
             class="form-control" 
             name="cpf" 
-            value="'.$cpf.'" 
+            value="' . $cpf . '" 
             required placeholder="Digite seu CPF" />
           </div>
           <div class="form-group mt-2">
@@ -63,7 +61,7 @@
             <input type="tel" 
             class="form-control" 
             name="tel" 
-            value="'.$telefone.'" 
+            value="' . $telefone . '" 
             required placeholder="Digite seu telefone" />
           </div>
           <div class="form-group mt-2">
@@ -71,7 +69,7 @@
             <input type="number" 
             class="form-control" 
             name="salario" 
-            value="'.$salario.'" 
+            value="' . $salario . '" 
             required placeholder="Digite seu salario" />
           </div>
           <div class="form-group mt-2">
@@ -79,7 +77,7 @@
             <input type="date" 
             class="form-control" 
             name="data_nascimento" 
-            value="'.$nascimento.'" 
+            value="' . $nascimento . '" 
             required placeholder="Digite seu telefone" />
           </div>
           <div class="d-grid gap-2 mt-4">
@@ -94,4 +92,5 @@
     </div>
   </section>
 </body>
+
 </html>

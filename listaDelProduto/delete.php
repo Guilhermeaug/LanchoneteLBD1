@@ -1,19 +1,15 @@
 <?php
-    //pdo mysql
-    $pdo = new PDO('mysql:host=127.0.0.1:3308;dbname=lanchonete','root','');
+include(__DIR__ . '/../config.php');
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-        $id = $_GET['deleteid'];
-        
-        $sql = "DELETE FROM `produto`
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    $id = $_GET['deleteid'];
+
+    $sql = "DELETE FROM produto
         WHERE id_produto='$id'";
+    $stid = oci_parse($conn, $sql);
+    oci_execute($stid);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        
-
-         header('Location: ../index.php');
-      }
-
-?>
+    header('Location: ../index.php');
+}

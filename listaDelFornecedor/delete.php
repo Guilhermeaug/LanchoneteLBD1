@@ -1,19 +1,13 @@
 <?php
-    //pdo mysql
-    $pdo = new PDO('mysql:host=127.0.0.1:3308;dbname=lanchonete','root','');
+include(__DIR__ . '/../config.php');
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $cnpj = $_GET['deletecnpj'];
 
-        $cnpj = $_GET['deletecnpj'];
-        
-        $sql = "DELETE FROM `fornecedor`
+    $sql = "DELETE FROM fornecedor
         WHERE cnpj='$cnpj'";
+    $stid = oci_parse($conn, $sql);
+    oci_execute($stid);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        
-
-         header('Location: ../index.php');
-      }
-
-?>
+     header('Location: ../index.php');
+}

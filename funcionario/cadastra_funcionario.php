@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $data_nascimento = $_POST['data_nascimento'];
   $salario =$_POST['salario'];
 
-  $sql = "INSERT INTO funcionario (id,cpf,nome_funcionario, telefone_funcionario,salario,data_nascimento) VALUES ('$id',$cpf','$name', '$tel','$salario','$data_nascimento')";
+  $sql = "INSERT INTO funcionario (cpf,nome_funcionario, telefone_funcionario,salario,data_nascimento) VALUES ('$cpf','$name', '$tel','$salario','$data_nascimento')";
   $stid = oci_parse($conn, $sql);
   $status = oci_execute($stid);
   

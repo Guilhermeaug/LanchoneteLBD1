@@ -25,10 +25,6 @@
       </div>
       <div class="col">
         <form action="cadastra_funcionario.php" method="post">
-            <div class="form-group">
-            <label for="id">Identificador</label>
-            <input type="number" class="form-control" name="id" required placeholder="Digite seu id" />
-          </div>
           <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" name="nome" required placeholder="Digite seu nome" />

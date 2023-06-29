@@ -1,22 +1,15 @@
 <?php
-    //pdo mysql
-    $pdo = new PDO('mysql:host=127.0.0.1:3308;dbname=lanchonete','root','');
+include(__DIR__ . '/../config.php');
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $cpf = $_POST['cpf'];
-        $nome = $_POST['nome'];
-        $telefone = $_POST['tel'];
+    $cpf = $_POST['cpf'];
+    $nome = $_POST['nome'];
+    $telefone = $_POST['tel'];
 
-        $sql = "UPDATE `cliente` SET
-        nome_cliente='$nome',telefone_cliente='$telefone'
-        WHERE cpf='$cpf'";
+    $sql = "UPDATE cliente SET nome_cliente='$nome', telefone_cliente='$telefone' WHERE cpf='$cpf'";
+    $stid = oci_parse($conn, $sql);
+    oci_execute($stid);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        
-
-         header('Location: ../index.php');
-      }
-
-?>
+    header('Location: ../index.php');
+}
