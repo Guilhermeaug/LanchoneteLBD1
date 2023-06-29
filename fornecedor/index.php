@@ -23,6 +23,9 @@
 
   <body class="h-100 d-flex align-items-center justify-content-center">
     <section class="container">
+    <?php
+    include'../partials/Header.php';
+    ?>
       <h1 class="text-center">Cadastro de Fornecedores</h1>
       <div class="row align-items-center justify-content-center mt-4">
         <div class="col">
