@@ -10,7 +10,7 @@ function createProduto($conn)
   $description = $_POST['descricao'];
   $image = $_POST['imagem'];
 
-  $sql = "INSERT INTO produto (nome_produto, preco, quant_estoque, descricao, image) VALUES ($name', '$price', '$stock', '$description', '$image')";
+  $sql = "INSERT INTO produto (nome_produto, preco, quant_estoque, descricao, image) VALUES ('$name', '$price', '$stock', '$description', '$image')";
   $stid = oci_parse($conn, $sql);
   oci_execute($stid, OCI_NO_AUTO_COMMIT);
 }
@@ -45,5 +45,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   createFornecimento($conn);
   oci_commit($conn);
   oci_close($conn);
-  // header('Location: index.php');
+  header('Location: index.php');
 }
